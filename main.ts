@@ -20,6 +20,13 @@ function drive (text: string) {
         basic.pause(svingetid)
         servos.P1.run(-1 * max_fart)
         servos.P2.run(max_fart)
+        basic.showLeds(`
+            . . # . .
+            . # . . .
+            # # # # #
+            . # . . .
+            . . # . .
+            `)
         bluetooth.uartWriteString("ferdig")
     } else if (text == "Pil H") {
         servos.P1.run(0)
@@ -27,13 +34,28 @@ function drive (text: string) {
         basic.pause(svingetid)
         servos.P1.run(-1 * max_fart)
         servos.P2.run(max_fart)
+        basic.showLeds(`
+            . . # . .
+            . . . # .
+            # # # # #
+            . . . # .
+            . . # . .
+            `)
         bluetooth.uartWriteString("ferdig")
     } else if (text == "Annet") {
         servos.P1.run(-1 * max_fart)
         servos.P2.run(max_fart)
+        basic.showLeds(`
+            . . # . .
+            . # # # .
+            # . # . #
+            . . # . .
+            . . # . .
+            `)
     } else if (text == "Stop") {
         servos.P1.stop()
         servos.P2.stop()
+        basic.showString("S")
     }
 }
 let max_fart = 0
