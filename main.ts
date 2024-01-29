@@ -13,6 +13,13 @@ bluetooth.onBluetoothConnected(function () {
         . . # # .
         `)
 })
+input.onButtonPressed(Button.A, function () {
+    servos.P1.run(-1 * max_fart)
+    servos.P2.run(max_fart)
+    basic.pause(svingetid)
+    servos.P1.stop()
+    servos.P2.stop()
+})
 function drive (mottatt: string) {
     if (mottatt == "Pil V") {
         servos.P1.run(-1 * max_fart)
