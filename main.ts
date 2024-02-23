@@ -34,7 +34,6 @@ function drive (mottatt: string) {
             . # . . .
             . . # . .
             `)
-        bluetooth.uartWriteString("ferdig")
     } else if (mottatt == "Pil H") {
         servos.P1.run(0)
         servos.P2.run(max_fart)
@@ -48,7 +47,6 @@ function drive (mottatt: string) {
             . . . # .
             . . # . .
             `)
-        bluetooth.uartWriteString("ferdig")
     } else if (mottatt == "Annet") {
         servos.P1.run(-1 * max_fart)
         servos.P2.run(max_fart)
@@ -64,6 +62,7 @@ function drive (mottatt: string) {
         servos.P2.stop()
         basic.showString("S")
     }
+    bluetooth.uartWriteString("ferdig")
 }
 let max_fart = 0
 let mottatt = ""
