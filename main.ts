@@ -25,8 +25,8 @@ function drive (mottatt: string) {
         servos.P1.run(-1 * max_fart)
         servos.P2.run(0)
         basic.pause(svingetid)
-        servos.P1.run(-1 * max_fart)
-        servos.P2.run(max_fart)
+        servos.P1.run(0)
+        servos.P2.run(0)
         basic.showLeds(`
             . . # . .
             . # . . .
@@ -38,8 +38,8 @@ function drive (mottatt: string) {
         servos.P1.run(0)
         servos.P2.run(max_fart)
         basic.pause(svingetid)
-        servos.P1.run(-1 * max_fart)
-        servos.P2.run(max_fart)
+        servos.P1.run(0)
+        servos.P2.run(0)
         basic.showLeds(`
             . . # . .
             . . . # .
