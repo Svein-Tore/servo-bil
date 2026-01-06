@@ -15,18 +15,18 @@ bluetooth.onBluetoothConnected(function () {
 })
 input.onButtonPressed(Button.A, function () {
     servos.P1.run(-1 * max_fart)
-    servos.P2.run(max_fart)
+    servos.P0.run(max_fart)
     basic.pause(svingetid)
     servos.P1.stop()
-    servos.P2.stop()
+    servos.P0.stop()
 })
 function drive (mottatt: string) {
     if (mottatt == "Pil V") {
         servos.P1.run(-1 * max_fart)
-        servos.P2.run(0)
+        servos.P0.run(0)
         basic.pause(svingetid)
         servos.P1.run(0)
-        servos.P2.run(0)
+        servos.P0.run(0)
         basic.showLeds(`
             . . # . .
             . # . . .
@@ -36,10 +36,10 @@ function drive (mottatt: string) {
             `)
     } else if (mottatt == "Pil H") {
         servos.P1.run(0)
-        servos.P2.run(max_fart)
+        servos.P0.run(max_fart)
         basic.pause(svingetid)
         servos.P1.run(0)
-        servos.P2.run(0)
+        servos.P0.run(0)
         basic.showLeds(`
             . . # . .
             . . . # .
@@ -49,7 +49,7 @@ function drive (mottatt: string) {
             `)
     } else if (mottatt == "Annet") {
         servos.P1.run(-1 * max_fart)
-        servos.P2.run(max_fart)
+        servos.P0.run(max_fart)
         basic.showLeds(`
             . . # . .
             . # # # .
@@ -59,7 +59,7 @@ function drive (mottatt: string) {
             `)
     } else if (mottatt == "Stop") {
         servos.P1.stop()
-        servos.P2.stop()
+        servos.P0.stop()
         basic.showString("S")
     }
     bluetooth.uartWriteString("ferdig")
