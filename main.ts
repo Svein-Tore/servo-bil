@@ -15,10 +15,8 @@ bluetooth.onBluetoothConnected(function () {
 })
 input.onButtonPressed(Button.A, function () {
     servos.P1.run(-1 * max_fart)
-    servos.P0.run(max_fart)
     basic.pause(svingetid)
     servos.P1.stop()
-    servos.P0.stop()
 })
 function drive (mottatt: string) {
     if (mottatt == "Pil V") {
@@ -64,6 +62,18 @@ function drive (mottatt: string) {
     }
     bluetooth.uartWriteString("ferdig")
 }
+input.onButtonPressed(Button.AB, function () {
+    servos.P1.run(-1 * max_fart)
+    servos.P0.run(max_fart)
+    basic.pause(svingetid)
+    servos.P1.stop()
+    servos.P0.stop()
+})
+input.onButtonPressed(Button.B, function () {
+    servos.P0.run(max_fart)
+    basic.pause(svingetid)
+    servos.P0.stop()
+})
 let max_fart = 0
 let mottatt = ""
 let svingetid = 0
