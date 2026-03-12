@@ -1,6 +1,9 @@
 bluetooth.onUartDataReceived(serial.delimiters(Delimiters.Dollar), function () {
     mottatt = bluetooth.uartReadUntil(serial.delimiters(Delimiters.Dollar))
-    drive(mottatt)
+    if (mottatt != kontroll) {
+        drive(mottatt)
+        kontroll = mottatt
+    }
 })
 bluetooth.onBluetoothConnected(function () {
     bluetooth.startUartService()
@@ -19,11 +22,11 @@ input.onButtonPressed(Button.A, function () {
     servos.P1.stop()
 })
 function drive (mottatt: string) {
-    if (mottatt == "Pil V") {
-        servos.P1.run(-1 * max_fart)
+    if (mottatt == "pil v") {
+        servos.P2.run(-1 * max_fart)
         servos.P0.run(0)
         basic.pause(svingetid)
-        servos.P1.run(0)
+        servos.P2.run(0)
         servos.P0.run(0)
         basic.showLeds(`
             . . # . .
@@ -32,11 +35,11 @@ function drive (mottatt: string) {
             . # . . .
             . . # . .
             `)
-    } else if (mottatt == "Pil H") {
-        servos.P1.run(0)
+    } else if (mottatt == "pil h") {
+        servos.P2.run(0)
         servos.P0.run(max_fart)
         basic.pause(svingetid)
-        servos.P1.run(0)
+        servos.P2.run(0)
         servos.P0.run(0)
         basic.showLeds(`
             . . # . .
@@ -45,8 +48,8 @@ function drive (mottatt: string) {
             . . . # .
             . . # . .
             `)
-    } else if (mottatt == "Annet") {
-        servos.P1.run(-1 * max_fart)
+    } else if (mottatt == "annet") {
+        servos.P2.run(-1 * max_fart)
         servos.P0.run(max_fart)
         basic.showLeds(`
             . . # . .
@@ -55,8 +58,8 @@ function drive (mottatt: string) {
             . . # . .
             . . # . .
             `)
-    } else if (mottatt == "Stop") {
-        servos.P1.stop()
+    } else if (mottatt == "stop") {
+        servos.P2.stop()
         servos.P0.stop()
         basic.showString("S")
     }
@@ -76,9 +79,11 @@ input.onButtonPressed(Button.B, function () {
 })
 let max_fart = 0
 let mottatt = ""
+let kontroll = ""
 let svingetid = 0
 bluetooth.startUartService()
 svingetid = 2000
+kontroll = "hvasomhelst"
 basic.showIcon(IconNames.Happy)
 mottatt = ""
 max_fart = 20
